@@ -4,7 +4,6 @@
 [Node.js Full Course for Beginners | Complete All-in-One Tutorial | 7 Hours](https://www.youtube.com/watch?v=f2EqECiTBL8&ab_channel=DaveGray)
 
 ## Prerequisite
-Angular requires Node.js<br/>
 If you don't have Node.js installed on your machine, installing Node.js on https://nodejs.org/en
 
 ## Setup Dependency
