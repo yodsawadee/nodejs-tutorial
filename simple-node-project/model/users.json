@@ -1,1 +1,25 @@
-[{"username":"jan.yodsu","password":"$2b$10$v4IxELknYAUnmxqSlZZPDugPEru0C0G4ezu6uYmrDcPE3lP7Msv9e","refreshToeken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imphbi55b2RzdSIsImlhdCI6MTY4NDM5NTA1NSwiZXhwIjoxNjg0NDgxNDU1fQ.2R3orE8Tusw1073FJ_YZicTBP7fkFNZnxkxEiUnw2k4"}]
+[
+    {
+        "username": "jan.yodsawadee",
+        "roles": {
+            "Editor": "R002"
+        },
+        "password": "$2b$10$kEy/iRYCuAhb1xbDggyL4OEDVK/BLvFVu1r2FPUO29F/alaa2eGrq"
+    },
+    {
+        "username": "jan.yodsa",
+        "roles": {
+            "Admin": "R001"
+        },
+        "password": "$2b$10$2kGoaVPT2EkBwscMGKja4urbT31oFIElf2Vy71NdBnFpOD8lrxdWC",
+        "refreshToeken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imphbi55b2RzYSIsImlhdCI6MTY4NDM5ODkyNywiZXhwIjoxNjg0NDg1MzI3fQ.r83M1XjN5yXLw1gaXWyhTVifPYy4aIJr2EHprSmhbN4"
+    },
+    {
+        "username": "jan.yodsu",
+        "roles": {
+            "User": "R003"
+        },
+        "password": "$2b$10$v4IxELknYAUnmxqSlZZPDugPEru0C0G4ezu6uYmrDcPE3lP7Msv9e",
+        "refreshToeken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imphbi55b2RzdSIsImlhdCI6MTY4NDM5ODkzNiwiZXhwIjoxNjg0NDg1MzM2fQ.IxoYCAHZn9Rs8G565AfZQLB4FSVjRMKy12qQlnr_jkY"
+    }
+]

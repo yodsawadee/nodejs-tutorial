@@ -9,3 +9,5 @@
 20230518 14:30:54	822ded68-5d6c-4569-9a0c-9b7bafa9aedd	TypeError: ReadableByteStreamController.sendStatus is not a function
 20230518 14:32:26	ac966607-818b-4b2d-b82a-29e9897c8639	TypeError: ReadableByteStreamController.sendStatus is not a function
 20230518 14:33:19	4e73cc88-0609-415f-9b00-e993095c68d5	TypeError: ReadableByteStreamController.sendStatus is not a function
+20230518 15:15:04	76983806-8fa3-4448-bfaa-15469f96ab57	TypeError: authHeader?.startWith is not a function
+20230518 15:15:53	ae8fdb9f-6b33-464c-a980-96d9406d8637	TypeError: authHeader?.startWith is not a function
