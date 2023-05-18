@@ -57,3 +57,5 @@
 20230518 16:30:17	e6fe9d98-1278-492c-a41f-fa8c036be36f	GET undefined /logout
 20230518 16:30:19	2ef2cee2-e084-4f02-824d-725c56887432	POST undefined /auth
 20230518 16:30:26	cd28983c-777e-471b-b0a0-f0860cf1d03c	GET undefined /employees
+20230518 16:42:17	fd73a708-cbfe-4827-ad1c-9d697be39dac	POST undefined /register
+20230518 16:44:19	fd885fb0-5f38-4492-a243-4f144ea1762d	POST undefined /register
