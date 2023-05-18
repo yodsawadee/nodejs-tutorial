@@ -1,3 +1,8 @@
+const usersDB = {
+    users: require('../mock-data/users.json'),
+    setUsers: function (data) { this.users = data }
+}
+
 const User = require('../model/User');
 const jwt = require('jsonwebtoken');
 

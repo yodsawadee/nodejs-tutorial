@@ -70,3 +70,15 @@
 20230518 17:17:09	d4ac93ec-cbf7-409e-b6ee-f61dd6fc2619	POST undefined /auth
 20230518 17:17:13	c3fd126a-b8d0-4549-b973-b46f9c2038b6	GET undefined /logout
 20230518 17:17:26	f209dcd8-fe97-47a7-b9ca-305c631dc88c	POST undefined /auth/local
+20230518 17:22:29	7aa7fbce-db2b-44e5-80ac-68221bccef60	POST undefined /auth/local
+20230518 17:23:03	0ad5194a-4cfc-4b92-b333-7e5c44f93279	GET undefined /logout/local
+20230518 17:23:24	b2419ec9-0645-4488-8a85-b1b942953862	POST undefined /auth/local
+20230518 17:23:30	403159fa-d656-4d4d-a7fd-589f4e42215e	POST undefined /auth/local
+20230518 17:23:37	79a9e693-3abc-4025-805a-dd555c21cc2e	POST undefined /auth/local
+20230518 17:23:48	f0f11811-233e-4abc-8f20-6a6adabd1790	GET undefined /logout/local
+20230518 17:24:47	35a746a0-5b92-4fed-80ee-70a8e7ae1300	POST undefined /auth/local
+20230518 17:24:50	e702f909-5dfa-4ddd-affa-bcf8db5319b6	GET undefined /logout/local
+20230518 17:31:10	f079fa98-e183-4617-8759-b44c93a49780	POST undefined /auth/local
+20230518 17:31:26	7a5e2815-cf9e-4898-8ee7-f17917941ab0	GET undefined /logout/local
+20230518 17:31:32	147b1aec-ed90-4f02-a9c2-2d197b2749a8	POST undefined /auth/local
+20230518 17:31:37	89a9c923-f5a1-455e-943e-a7d40b923b0c	GET undefined /logout/local

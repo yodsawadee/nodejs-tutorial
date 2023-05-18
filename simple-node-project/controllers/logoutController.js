@@ -1,3 +1,10 @@
+const usersDB = {
+    users: require('../mock-data/users.json'),
+    setUsers: function (data) { this.users = data }
+}
+const fsPromises = require('fs').promises;
+const path = require('path');
+
 const User = require('../model/User');
 
 const handleLogout = async (req, res) => {
@@ -44,7 +51,7 @@ const handleLocalLogout = async (req, res) => {
     const otherUsers = usersDB.users.filter(person => person.refreshToken !== foundUser.refreshToken);
     const currentUsers = { ...foundUser, refreshToken: '' };
     usersDB.setUsers([...otherUsers, currentUsers]);
-    await fsPromises.writeFile(path.join(__dirname, '..', 'model', 'users.json'), JSON.stringify(usersDB.users));
+    await fsPromises.writeFile(path.join(__dirname, '..', 'mock-data', 'users.json'), JSON.stringify(usersDB.users));
     console.log(usersDB.users);
 
     // secure: true - remove out if testing within Thunser Client (only serves on https)

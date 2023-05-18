@@ -1,5 +1,5 @@
 const data = {
-    employees: require('../model/employees.json'),
+    employees: require('../mock-data/employees.json'),
     setEmployees: function (data) { this.employees = data }
 };
 const fsPromises = require('fs').promises;
@@ -20,7 +20,7 @@ const createNewEmployee = async (req, res) => {
         return res.status(400).json({ 'message': 'Firstname and Lastname are required.' })
     }
     data.setEmployees([...data.employees, newEmployees]);
-    await fsPromises.writeFile(path.join(__dirname, '..', 'model', 'employees.json'), JSON.stringify(data.employees));
+    await fsPromises.writeFile(path.join(__dirname, '..', 'mock-data', 'employees.json'), JSON.stringify(data.employees));
     console.log(data.employees);
     res.status(201).json(data.employees);
 }
@@ -35,7 +35,7 @@ const updateNewEmployee = async (req, res) => {
     const filteredArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id));
     const unsortedArray = [...filteredArray, employee];
     data.setEmployees(unsortedArray.sort((a, b) => a.id > b.id ? 1 : a.id < b.id ? -1 : 0));
-    await fsPromises.writeFile(path.join(__dirname, '..', 'model', 'employees.json'), JSON.stringify(data.employees));
+    await fsPromises.writeFile(path.join(__dirname, '..', 'mock-data', 'employees.json'), JSON.stringify(data.employees));
     console.log(data.employees);
     res.json(data.employees);
 }
@@ -47,7 +47,7 @@ const deleteEmployee = async (req, res) => {
     }
     const filteredArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id));
     data.setEmployees([...filteredArray]);
-    await fsPromises.writeFile(path.join(__dirname, '..', 'model', 'employees.json'), JSON.stringify(data.employees));
+    await fsPromises.writeFile(path.join(__dirname, '..', 'mock-data', 'employees.json'), JSON.stringify(data.employees));
     console.log(data.employees);
     res.json(data.employees);
 }
