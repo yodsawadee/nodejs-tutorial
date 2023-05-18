@@ -6,6 +6,30 @@ const handleNewUser = async (req, res) => {
     if (!user || !pwd) return res.status(400).json({ 'message': 'Username and Password are required.' });
 
     // check duplicate usename in the db
+    const duplicate = await User.findOne({ username: user }).exec();
+    if (duplicate) return res.sendStatus(409); // conflict
+
+    try {
+        // encrypt the password
+        const hashedPwd = await bcrypt.hash(pwd, 10);
+        // create and store new user
+        const result = await User.create({ 
+            "username": user,
+            "password": hashedPwd 
+        });
+        console.log(result);
+
+        res.status(201).json({ 'success': `New user ${user} created!` });
+    } catch (err) {
+        res.status(500).json({ 'message': err.message });
+    }
+}
+
+const handleLocalNewUser = async (req, res) => {
+    const { user, pwd } = req.body;
+    if (!user || !pwd) return res.status(400).json({ 'message': 'Username and Password are required.' });
+
+    // check duplicate usename in the db
     const duplicate = await User.findOne({ username: user}).exec();
     if (duplicate) return res.sendStatus(409); // conflict
 
@@ -25,4 +49,4 @@ const handleNewUser = async (req, res) => {
     }
 }
 
-module.exports = { handleNewUser };
+module.exports = { handleNewUser, handleLocalNewUser };

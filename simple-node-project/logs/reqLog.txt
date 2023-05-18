@@ -59,3 +59,14 @@
 20230518 16:30:26	cd28983c-777e-471b-b0a0-f0860cf1d03c	GET undefined /employees
 20230518 16:42:17	fd73a708-cbfe-4827-ad1c-9d697be39dac	POST undefined /register
 20230518 16:44:19	fd885fb0-5f38-4492-a243-4f144ea1762d	POST undefined /register
+20230518 16:59:27	c1b5421b-f672-4b95-add2-5821a512ab9a	POST undefined /register
+20230518 16:59:41	312f9ecd-650e-4703-83e0-85aa0d471ce5	POST undefined /register
+20230518 17:00:11	02b94228-5a27-4cd7-b772-581fd43b4019	POST undefined /auth
+20230518 17:02:09	1c11238e-35a7-40cf-a87a-71f524b7790a	POST undefined /auth
+20230518 17:02:14	9e3ac60b-9cf9-4f75-8a18-827c3f6ba9bf	GET undefined /refresh
+20230518 17:02:27	814ded2a-642a-4e09-8f6a-77b5bbb5cea0	GET undefined /logout
+20230518 17:13:21	105d4573-1290-4797-8236-b1ddebd5e4b0	POST undefined /local/auth
+20230518 17:14:52	ecc71030-7add-4c0c-b42d-81af11c4a7af	POST undefined /auth/local
+20230518 17:17:09	d4ac93ec-cbf7-409e-b6ee-f61dd6fc2619	POST undefined /auth
+20230518 17:17:13	c3fd126a-b8d0-4549-b973-b46f9c2038b6	GET undefined /logout
+20230518 17:17:26	f209dcd8-fe97-47a7-b9ca-305c631dc88c	POST undefined /auth/local

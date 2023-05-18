@@ -1,9 +1,4 @@
-const usersDB = {
-    users: require('../model/users.json'),
-    setUsers: function (data) { this.users = data }
-}
-const fsPromises = require('fs').promises;
-const path = require('path');
+const User = require('../model/User');
 
 const handleLogout = async (req, res) => {
     // On client, also delete the accessToken
@@ -13,9 +8,35 @@ const handleLogout = async (req, res) => {
     const refreshToken = cookies.jwt;
 
     // is refreshToken in db
+    const foundUser = await User.findOne({ refreshToken }).exec();
+    if (!foundUser) {
+        // secure: true - remove out if testing within Thunser Client (only serves on https)
+        res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
+        return res.sendStatus(204);
+    }
+
+    // delete refreshToken from db
+    foundUser.refreshToken = '';
+    const result = await foundUser.save();
+    console.log(result);
+
+    // secure: true - remove out if testing within Thunser Client (only serves on https)
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
+    res.sendStatus(204);
+}
+
+const handleLocalLogout = async (req, res) => {
+    // On client, also delete the accessToken
+
+    const cookies = req.cookies;
+    if (!cookies?.jwt) return res.sendStatus(204); // no content
+    const refreshToken = cookies.jwt;
+
+    // is refreshToken in db
     const foundUser = usersDB.users.find(person => person.refreshToken === refreshToken);
     if (!foundUser) {
-        res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
+        // secure: true - remove out if testing within Thunser Client (only serves on https)
+        res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
         return res.sendStatus(204);
     }
 
@@ -26,8 +47,9 @@ const handleLogout = async (req, res) => {
     await fsPromises.writeFile(path.join(__dirname, '..', 'model', 'users.json'), JSON.stringify(usersDB.users));
     console.log(usersDB.users);
 
-    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true }); // secure; true - only serves on https
+    // secure: true - remove out if testing within Thunser Client (only serves on https)
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
     res.sendStatus(204);
 }
 
-module.exports = { handleLogout };
+module.exports = { handleLogout, handleLocalLogout };
