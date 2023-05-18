@@ -1,27 +1,31 @@
-
 const data = {
     employees: require('../model/employees.json'),
     setEmployees: function (data) { this.employees = data }
 };
+const fsPromises = require('fs').promises;
+const path = require('path');
 
 const getAllEmployees = (req, res) => {
+    console.log(data.employees);
     res.json(data.employees);
 }
 
-const createNewEmployee = (req, res) => {
+const createNewEmployee = async (req, res) => {
     const newEmployees = {
         id: data.employees?.length ? data.employees[data.employees.length - 1].id + 1 : 1,
         firstname: req.body.firstname,
         lastname: req.body.lastname
     }
     if (!newEmployees.firstname || !newEmployees.lastname) {
-        return res.status(400).json({ 'message': 'firstname and lastname are required.' })
+        return res.status(400).json({ 'message': 'Firstname and Lastname are required.' })
     }
     data.setEmployees([...data.employees, newEmployees]);
+    await fsPromises.writeFile(path.join(__dirname, '..', 'model', 'employees.json'), JSON.stringify(data.employees));
+    console.log(data.employees);
     res.status(201).json(data.employees);
 }
 
-const updateNewEmployee = (req, res) => {
+const updateNewEmployee = async (req, res) => {
     const employee = data.employees.find(emp => emp.id === parseInt(req.body.id));
     if (!employee) {
         return res.status(400).json({ 'message': `Employee ID: ${req.body.id} not found.` })
@@ -30,20 +34,21 @@ const updateNewEmployee = (req, res) => {
     if (req.body.lastname) employee.lastname = req.body.lastname;
     const filteredArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id));
     const unsortedArray = [...filteredArray, employee];
-    console.log(unsortedArray)
-    data.setEmployees(unsortedArray.sort());
-    // console.log(unsortedArray.sort())
     data.setEmployees(unsortedArray.sort((a, b) => a.id > b.id ? 1 : a.id < b.id ? -1 : 0));
+    await fsPromises.writeFile(path.join(__dirname, '..', 'model', 'employees.json'), JSON.stringify(data.employees));
+    console.log(data.employees);
     res.json(data.employees);
 }
 
-const deleteEmployee = (req, res) => {
+const deleteEmployee = async (req, res) => {
     const employee = data.employees.find(emp => emp.id === parseInt(req.body.id));
     if (!employee) {
         return res.status(400).json({ 'message': `Employee ID: ${req.body.id} not found.` })
     }
     const filteredArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id));
     data.setEmployees([...filteredArray]);
+    await fsPromises.writeFile(path.join(__dirname, '..', 'model', 'employees.json'), JSON.stringify(data.employees));
+    console.log(data.employees);
     res.json(data.employees);
 }
 

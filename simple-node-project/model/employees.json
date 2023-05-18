@@ -1,17 +1,1 @@
-[
-    {
-        "id": 1,
-        "firstname": "Dave",
-        "lastname": "Gray"
-    },
-    {
-        "id": 2,
-        "firstname": "John",
-        "lastname": "Smith"
-    },
-    {
-        "id": 3,
-        "firstname": "Janny",
-        "lastname": "Yod"
-    }
-]
+[{"id":1,"firstname":"Dave","lastname":"Gray"},{"id":2,"firstname":"John","lastname":"Smith"},{"id":3,"firstname":"Janny","lastname":"Yod"},{"id":4,"firstname":"Saru","lastname":"Ayame"},{"id":5,"firstname":"Shira","lastname":"Yuki"},{"id":6,"firstname":"Beni","lastname":"Hime"},{"id":7,"firstname":"Fon","lastname":"Taksa"},{"id":8,"firstname":"Fuku","lastname":"Naka"}]
