@@ -94,3 +94,9 @@
 20230518 17:43:07	60ff2807-1153-44b0-a01e-24205c738483	GET undefined /employees
 20230518 17:43:10	574cdee5-c8b6-4299-8a04-0995c21270d5	POST undefined /auth
 20230518 17:43:18	2803df6f-b9cc-4fe6-b0f7-77fc50e4ce9c	GET undefined /employees
+20230519 09:44:34	836959fc-d579-49a9-8e98-0080c51516ca	GET undefined /
+20230519 09:44:34	eec622e3-5eb2-41e1-9393-496d92e26738	GET undefined /css/style.css
+20230519 09:44:34	f15c26d2-1602-4409-bd0b-b9ee3fd1cca5	GET undefined /favicon.ico
+20230519 09:51:18	6b1946fa-e04f-459e-bc9b-2aed7d89ecc4	GET undefined /
+20230519 09:51:18	f91ee5a4-5276-4879-ba1a-6af47b147b5a	GET undefined /css/style.css
+20230519 09:51:18	7e46ee7a-0bd4-41ea-9acd-5c844c5b4a56	GET undefined /favicon.ico
