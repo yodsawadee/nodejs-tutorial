@@ -101,3 +101,13 @@
 20230519 09:51:18	f91ee5a4-5276-4879-ba1a-6af47b147b5a	GET undefined /css/style.css
 20230519 09:51:18	7e46ee7a-0bd4-41ea-9acd-5c844c5b4a56	GET undefined /favicon.ico
 20230519 10:02:43	a6c695af-5057-41e0-8948-c1c75a19971b	POST undefined /auth/local
+20230519 15:31:11	34d14c0b-4627-4b03-91e3-426e0fc51ecc	POST undefined /auth/register
+20230519 15:31:24	0055903d-9e90-4833-8cfe-8a130dd4cb21	POST undefined /auth/register
+20230519 15:31:42	99d56f5c-d7c3-43f2-9e77-3b41f7b8de2e	POST undefined /auth/login
+20230519 15:31:49	fda44217-a91d-46a0-ad19-7f3f7f7b1cb1	GET undefined /auth/refresh
+20230519 15:31:54	04f5308b-a37c-4166-88da-cc06635b8a93	GET undefined /auth/logout
+20230519 15:32:56	68753645-380e-4239-9c97-a75ba17d6625	POST undefined /auth/login/local
+20230519 15:33:02	b3edcc3e-7295-4a0a-87ca-5f5c910521fb	GET undefined /auth/logout/local
+20230519 15:33:06	e296afdc-2f35-4c82-8b24-770617b2988b	GET undefined /auth/logout/local
+20230519 15:33:10	7ad9e771-77ab-40fa-bdbd-9b7a07923ecd	POST undefined /auth/login/local
+20230519 15:33:16	16fe7211-cfbd-4378-b487-e854d18baaad	GET undefined /auth/logout/local

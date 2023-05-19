@@ -13,11 +13,6 @@ const getAllEmployees = async (req, res) => {
     res.json(employees);
 }
 
-const getLocalAllEmployees = (req, res) => {
-    console.log(data.employees);
-    res.json(data.employees);
-}
-
 const createEmployee = async (req, res) => {
     if (!req?.body?.firstname || !req?.body?.lastname) {
         return res.status(400).json({ 'message': 'First and last names are required' });
@@ -31,21 +26,6 @@ const createEmployee = async (req, res) => {
     } catch (err) {
         console.error(err);
     }
-}
-
-const createLocalEmployee = async (req, res) => {
-    const newEmployees = {
-        id: data.employees?.length ? data.employees[data.employees.length - 1].id + 1 : 1,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
-    }
-    if (!newEmployees.firstname || !newEmployees.lastname) {
-        return res.status(400).json({ 'message': 'Firstname and Lastname are required.' })
-    }
-    data.setEmployees([...data.employees, newEmployees]);
-    await fsPromises.writeFile(path.join(__dirname, '..', 'mock-data', 'employees.json'), JSON.stringify(data.employees));
-    console.log(data.employees);
-    res.status(201).json(data.employees);
 }
 
 const updateEmployee = async (req, res) => {
@@ -63,6 +43,49 @@ const updateEmployee = async (req, res) => {
     res.json(result);
 }
 
+const deleteEmployee = async (req, res) => {
+    if (!req?.body?.id) return res.status(400).json({ 'message': 'Employee ID required.' });
+
+    const employee = await Employee.findOne({ _id: req.body.id }).exec();
+    if (!employee) {
+        return res.status(204).json({ "message": `No employee matches ID ${req.body.id}.` });
+    }
+    const result = await employee.deleteOne(); //{ _id: req.body.id }
+    res.json(result);
+}
+
+const getEmployee = async (req, res) => {
+    if (!req?.params?.id) return res.status(400).json({ 'message': 'Employee ID required.' });
+
+    const employee = await Employee.findOne({ _id: req.params.id }).exec();
+    if (!employee) {
+        return res.status(204).json({ "message": `No employee matches ID ${req.params.id}.` });
+    }
+    res.json(employee);
+}
+
+
+// ===== Local API ===== - use txt file within this repo not actual db
+const getLocalAllEmployees = (req, res) => {
+    console.log(data.employees);
+    res.json(data.employees);
+}
+
+const createLocalEmployee = async (req, res) => {
+    const newEmployees = {
+        id: data.employees?.length ? data.employees[data.employees.length - 1].id + 1 : 1,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname
+    }
+    if (!newEmployees.firstname || !newEmployees.lastname) {
+        return res.status(400).json({ 'message': 'Firstname and Lastname are required.' })
+    }
+    data.setEmployees([...data.employees, newEmployees]);
+    await fsPromises.writeFile(path.join(__dirname, '..', 'mock-data', 'employees.json'), JSON.stringify(data.employees));
+    console.log(data.employees);
+    res.status(201).json(data.employees);
+}
+
 const updateLocalEmployee = async (req, res) => {
     const employee = data.employees.find(emp => emp.id === parseInt(req.body.id));
     if (!employee) {
@@ -78,17 +101,6 @@ const updateLocalEmployee = async (req, res) => {
     res.json(data.employees);
 }
 
-const deleteEmployee = async (req, res) => {
-    if (!req?.body?.id) return res.status(400).json({ 'message': 'Employee ID required.' });
-
-    const employee = await Employee.findOne({ _id: req.body.id }).exec();
-    if (!employee) {
-        return res.status(204).json({ "message": `No employee matches ID ${req.body.id}.` });
-    }
-    const result = await employee.deleteOne(); //{ _id: req.body.id }
-    res.json(result);
-}
-
 const deleteLocalEmployee = async (req, res) => {
     const employee = data.employees.find(emp => emp.id === parseInt(req.body.id));
     if (!employee) {
@@ -99,16 +111,6 @@ const deleteLocalEmployee = async (req, res) => {
     await fsPromises.writeFile(path.join(__dirname, '..', 'mock-data', 'employees.json'), JSON.stringify(data.employees));
     console.log(data.employees);
     res.json(data.employees);
-}
-
-const getEmployee = async (req, res) => {
-    if (!req?.params?.id) return res.status(400).json({ 'message': 'Employee ID required.' });
-
-    const employee = await Employee.findOne({ _id: req.params.id }).exec();
-    if (!employee) {
-        return res.status(204).json({ "message": `No employee matches ID ${req.params.id}.` });
-    }
-    res.json(employee);
 }
 
 const getLocalEmployee = (req, res) => {
