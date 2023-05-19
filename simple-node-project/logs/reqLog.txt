@@ -100,3 +100,4 @@
 20230519 09:51:18	6b1946fa-e04f-459e-bc9b-2aed7d89ecc4	GET undefined /
 20230519 09:51:18	f91ee5a4-5276-4879-ba1a-6af47b147b5a	GET undefined /css/style.css
 20230519 09:51:18	7e46ee7a-0bd4-41ea-9acd-5c844c5b4a56	GET undefined /favicon.ico
+20230519 10:02:43	a6c695af-5057-41e0-8948-c1c75a19971b	POST undefined /auth/local
