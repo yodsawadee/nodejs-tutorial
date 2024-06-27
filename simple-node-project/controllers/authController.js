@@ -65,8 +65,12 @@ const handleLogin = async (req, res) => {
         const result = await foundUser.save();
         console.log(result);
         
-        // secure: true - remove out if testing within Thunser Client (only serves on https)
-        res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+        res.cookie('jwt', refreshToken, { 
+            httpOnly: true, 
+            sameSite: 'None', // allows the cookie to be sent in cross-site requests
+            maxAge: 24 * 60 * 60 * 1000, // sets the cookie's expiration time to 24 hours
+            secure: process.env.NODE_ENV === 'production'
+        });
         res.json({ accessToken });
     } else {
         res.sendStatus(401);
@@ -98,7 +102,7 @@ const handleRefreshToken = async (req, res) => {
                 process.env.ACCESS_TOKEN_SECRET,
                 { expiresIn: '30s' }
             )
-            res.json({ accessToken});
+            res.json({ accessToken });
         }
     )
 }
@@ -113,8 +117,7 @@ const handleLogout = async (req, res) => {
     // is refreshToken in db
     const foundUser = await User.findOne({ refreshToken }).exec();
     if (!foundUser) {
-        // secure: true - remove out if testing within Thunser Client (only serves on https)
-        res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
+        res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: process.env.NODE_ENV === 'production' });
         return res.sendStatus(204);
     }
 
@@ -123,8 +126,7 @@ const handleLogout = async (req, res) => {
     const result = await foundUser.save();
     console.log(result);
 
-    // secure: true - remove out if testing within Thunser Client (only serves on https)
-    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: process.env.NODE_ENV === 'production' });
     res.sendStatus(204);
 }
 
@@ -187,8 +189,7 @@ const handleLocalLogin = async (req, res) => {
         await fsPromises.writeFile(path.join(__dirname, '..', 'mock-data', 'users.json'), JSON.stringify(usersDB.users));
         console.log(usersDB.users);
 
-        // secure: true - remove out if testing within Thunser Client (only serves on https)
-        res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+        res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000, secure: process.env.NODE_ENV === 'production' });
         res.json({ accessToken });
     } else {
         res.sendStatus(401);
@@ -235,8 +236,7 @@ const handleLocalLogout = async (req, res) => {
     // is refreshToken in db
     const foundUser = usersDB.users.find(person => person.refreshToken === refreshToken);
     if (!foundUser) {
-        // secure: true - remove out if testing within Thunser Client (only serves on https)
-        res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
+        res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: process.env.NODE_ENV === 'production' });
         return res.sendStatus(204);
     }
 
@@ -247,8 +247,7 @@ const handleLocalLogout = async (req, res) => {
     await fsPromises.writeFile(path.join(__dirname, '..', 'mock-data', 'users.json'), JSON.stringify(usersDB.users));
     console.log(usersDB.users);
 
-    // secure: true - remove out if testing within Thunser Client (only serves on https)
-    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: process.env.NODE_ENV === 'production' });
     res.sendStatus(204);
 }
 
